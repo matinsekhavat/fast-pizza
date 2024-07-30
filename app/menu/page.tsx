@@ -1,12 +1,13 @@
 import MenuList from "../_features/menus/MenuList";
+import { getMenu } from "../_services/pizzaApi";
 
 async function page() {
-  const res = await fetch("https://react-fast-pizza-api.onrender.com/api/menu");
-  const menus = await res.json();
-  if (!menus.data.length) return <p>fetching</p>;
+  const menus = await getMenu();
+  console.log(menus);
+  if (!menus.length) return <p>fetching</p>;
   return (
     <div className="my-2 max-w-3xl mx-auto mb-20">
-      <MenuList menus={menus.data} />
+      <MenuList menus={menus} />
     </div>
   );
 }
