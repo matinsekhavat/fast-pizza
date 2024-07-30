@@ -9,6 +9,7 @@ export type MenuItemProps = {
   imageUrl: string;
   ingredients: string[];
   soldOut: boolean;
+  quantity?: number;
 };
 
 type MenuListProps = {
