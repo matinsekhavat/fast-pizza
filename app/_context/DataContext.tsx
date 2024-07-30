@@ -8,6 +8,7 @@ type DataProps = {
   basket: MenuItemProps[];
   addToCartHandler: (data: MenuItemProps) => void;
   increaseBasketHandler: (id: number) => void;
+  decreaseBasketHandler: (id: number) => void;
 };
 
 const DataContext = createContext<DataProps | null>(null);
@@ -26,10 +27,29 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
       )
     );
   }
+  //make decreaseBasketHandler
+  function decreaseBasketHandler(id: number): void {
+    setBasket((prev) =>
+      prev
+        .map((item) =>
+          item.id === id
+            ? { ...item, quantity: Math.max((item.quantity ?? 0) - 1, 0) }
+            : item
+        )
+        .filter((item) => (item.quantity ?? 0) > 0)
+    );
+  }
 
   return (
     <DataContext.Provider
-      value={{ name, setName, basket, addToCartHandler, increaseBasketHandler }}
+      value={{
+        name,
+        setName,
+        basket,
+        addToCartHandler,
+        increaseBasketHandler,
+        decreaseBasketHandler,
+      }}
     >
       {children}
     </DataContext.Provider>
