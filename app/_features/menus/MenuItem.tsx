@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { MenuItemProps } from "@/app/_features/menus/MenuList";
+import AddCardButton from "@/app/_ui/AddCardButton";
 function MenuItem({ menu }: { menu: MenuItemProps }) {
   return (
     <div className="flex justify-between pt-2">
@@ -23,9 +24,7 @@ function MenuItem({ menu }: { menu: MenuItemProps }) {
       </div>
       {/* right side */}
       <div className="self-end">
-        <button className="px-4 text-sm py-2 rounded-full bg-yellow-500 ">
-          add to Cart
-        </button>
+        <AddCardButton menu={menu} />
       </div>
     </div>
   );
