@@ -7,6 +7,7 @@ type DataProps = {
   setName: (name: string) => void;
   basket: MenuItemProps[];
   addToCartHandler: (data: MenuItemProps) => void;
+  increaseBasketHandler: (id: number) => void;
 };
 
 const DataContext = createContext<DataProps | null>(null);
@@ -14,12 +15,22 @@ const DataContext = createContext<DataProps | null>(null);
 const DataProvider = ({ children }: { children: ReactNode }) => {
   const [name, setName] = useState<string>("");
   const [basket, setBasket] = useState<MenuItemProps[]>([]);
+
   function addToCartHandler(data: MenuItemProps): void {
-    setBasket((prev) => [...prev, data]);
+    setBasket((prev) => [...prev, { ...data, quantity: 1 }]);
+  }
+  function increaseBasketHandler(id: number): void {
+    setBasket((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, quantity: (item.quantity ?? 0) + 1 } : item
+      )
+    );
   }
 
   return (
-    <DataContext.Provider value={{ name, setName, basket, addToCartHandler }}>
+    <DataContext.Provider
+      value={{ name, setName, basket, addToCartHandler, increaseBasketHandler }}
+    >
       {children}
     </DataContext.Provider>
   );
