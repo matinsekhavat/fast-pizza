@@ -1,4 +1,3 @@
-import Image from "next/image";
 import MenuList from "../_features/menus/MenuList";
 
 async function page() {
