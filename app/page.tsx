@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useData } from "./context/DataContext";
+import { useData } from "./_context/DataContext";
 
 function HomePage() {
   const { name, setName } = useData();
