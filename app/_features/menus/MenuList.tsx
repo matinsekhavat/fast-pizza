@@ -1,5 +1,6 @@
 import React from "react";
 import MenuItem from "./MenuItem";
+import BasketIndicator from "./BasketIndicator";
 
 export type MenuItemProps = {
   id: number;
@@ -20,6 +21,8 @@ function MenuList({ menus }: MenuListProps) {
       {menus.map((menu) => (
         <MenuItem menu={menu} key={menu.id} />
       ))}
+
+      <BasketIndicator />
     </div>
   );
 }
