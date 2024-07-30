@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./_ui/Header";
+import DataProvider from "./context/DataContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,10 @@ export default function RootLayout({
       <body
         className={`${inter.className} min-h-dvh grid grid-rows-[auto_1fr]`}
       >
-        <Header />
-        {children}
+        <DataProvider>
+          <Header />
+          <main className="bg-stone-100">{children}</main>
+        </DataProvider>
       </body>
     </html>
   );
