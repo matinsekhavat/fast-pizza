@@ -44,9 +44,12 @@ function Page() {
                   })}
                 </div>
                 <div className="flex items-center gap-4">
-                  <button className=" flex   my-4 bg-yellow-400 px-6 py-4 rounded-full">
+                  <Link
+                    href="/cart/new"
+                    className=" flex   my-4 bg-yellow-400 px-6 py-4 rounded-full"
+                  >
                     Order Pizzas
-                  </button>
+                  </Link>
                   <button
                     onClick={() => clearBasketHandler()}
                     className="bg-stone-300 border-stone-500 px-6 py-4 rounded-full"
