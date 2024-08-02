@@ -9,6 +9,7 @@ type DataProps = {
   addToCartHandler: (data: MenuItemProps) => void;
   increaseBasketHandler: (id: number) => void;
   decreaseBasketHandler: (id: number) => void;
+  clearBasketHandler: () => void;
 };
 
 const DataContext = createContext<DataProps | null>(null);
@@ -40,6 +41,9 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
     );
   }
 
+  function clearBasketHandler() {
+    setBasket([]);
+  }
   return (
     <DataContext.Provider
       value={{
@@ -49,6 +53,7 @@ const DataProvider = ({ children }: { children: ReactNode }) => {
         addToCartHandler,
         increaseBasketHandler,
         decreaseBasketHandler,
+        clearBasketHandler,
       }}
     >
       {children}
