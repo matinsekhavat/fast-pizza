@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useData } from "../_context/DataContext";
 import GoBackButton from "../_ui/GoBackButton";
 import AddCardButton from "../_ui/AddCardButton";
+import EmptyBasket from "../_ui/EmptyBasket";
 
 function Page() {
   const { basket, clearBasketHandler } = useData();
@@ -15,13 +16,7 @@ function Page() {
         <div>
           <div>
             {!basket.length ? (
-              <p className="my-2 border-2 border-dashed border-stone-300 p-4">
-                Your Basket is Empty. Go back to{" "}
-                <Link href="/menu" className="text-blue-500">
-                  Menu
-                </Link>{" "}
-                and order some pizzas.
-              </p>
+              <EmptyBasket />
             ) : (
               <div>
                 <div className="flex flex-col ">
