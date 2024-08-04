@@ -23,7 +23,10 @@ function Page() {
                   {basket.map((item) => {
                     return (
                       <>
-                        <div className="flex items-center justify-between py-4 border-b-2 border-stone-200">
+                        <div
+                          key={item.id}
+                          className="flex items-center justify-between py-4 border-b-2 border-stone-200"
+                        >
                           <p>
                             {item.quantity}× {item.name.toUpperCase()}
                           </p>
