@@ -4,7 +4,9 @@ import { MenuItemProps } from "@/app/_features/menus/MenuList";
 import AddCardButton from "@/app/_ui/AddCardButton";
 function MenuItem({ menu }: { menu: MenuItemProps }) {
   return (
-    <div className="flex justify-between pt-2">
+    <div
+      className={`flex justify-between pt-2 ${menu.soldOut ? "grayscale" : ""}`}
+    >
       {/* left side */}
       <div className="flex gap-4">
         {/* image */}
@@ -24,7 +26,7 @@ function MenuItem({ menu }: { menu: MenuItemProps }) {
       </div>
       {/* right side */}
       <div className="self-end">
-        <AddCardButton menu={menu} />
+        {menu.soldOut ? <p>SOLD OUT</p> : <AddCardButton menu={menu} />}
       </div>
     </div>
   );
